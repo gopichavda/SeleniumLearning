@@ -1,10 +1,11 @@
 package SeleniumSession;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class A_WebDriverBasics {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws  InterruptedException{
         System.setProperty("webdriver.chrome.driver","C:\\Software\\Driver\\chromedriver.exe");
 
         WebDriver driver = new ChromeDriver();
@@ -26,5 +27,28 @@ public class A_WebDriverBasics {
         }else{
             System.out.println("Page Title is incorrect");
         }
+
+        driver.findElement(By.className("ico-login")).click();
+
+        driver.navigate().back();
+
+        Thread.sleep(5000);
+
+        driver.navigate().forward();
+
+        driver.manage().window().maximize();
+
+//        driver.manage().window().minimize();
+
+        driver.navigate().refresh();
+
+        String Url = driver.getCurrentUrl();
+        System.out.println("Current URL:" + Url);
+
+
+
+        driver.quit();
+
+        driver.close();
     }
 }
